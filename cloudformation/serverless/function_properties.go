@@ -15,6 +15,7 @@ type Function_Properties struct {
 	KinesisEvent         *Function_KinesisEvent
 	DynamoDBEvent        *Function_DynamoDBEvent
 	ApiEvent             *Function_ApiEvent
+	HttpApiEvent         *Function_HttpApiEvent
 	ScheduleEvent        *Function_ScheduleEvent
 	CloudWatchEventEvent *Function_CloudWatchEventEvent
 	CloudWatchLogsEvent  *Function_CloudWatchLogsEvent
@@ -48,6 +49,10 @@ func (r Function_Properties) value() interface{} {
 
 	if r.ApiEvent != nil {
 		ret = append(ret, *r.ApiEvent)
+	}
+
+	if r.HttpApiEvent != nil {
+		ret = append(ret, *r.HttpApiEvent)
 	}
 
 	if r.ScheduleEvent != nil {
@@ -111,6 +116,8 @@ func (r *Function_Properties) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(b, &r.DynamoDBEvent)
 
 		json.Unmarshal(b, &r.ApiEvent)
+
+		json.Unmarshal(b, &r.HttpApiEvent)
 
 		json.Unmarshal(b, &r.ScheduleEvent)
 
