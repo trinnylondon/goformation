@@ -14,7 +14,7 @@ import (
 type Fleet struct {
 
 	// ComputeCapacity AWS CloudFormation Property
-	// Required: true
+	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-computecapacity
 	ComputeCapacity *Fleet_ComputeCapacity `json:"ComputeCapacity,omitempty"`
 
@@ -73,6 +73,11 @@ type Fleet struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-instancetype
 	InstanceType string `json:"InstanceType,omitempty"`
 
+	// MaxConcurrentSessions AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-maxconcurrentsessions
+	MaxConcurrentSessions int `json:"MaxConcurrentSessions,omitempty"`
+
 	// MaxUserDurationInSeconds AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-maxuserdurationinseconds
@@ -82,6 +87,11 @@ type Fleet struct {
 	// Required: true
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-name
 	Name string `json:"Name,omitempty"`
+
+	// Platform AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-platform
+	Platform string `json:"Platform,omitempty"`
 
 	// StreamView AWS CloudFormation Property
 	// Required: false
@@ -93,10 +103,21 @@ type Fleet struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-tags
 	Tags []tags.Tag `json:"Tags,omitempty"`
 
+	// UsbDeviceFilterStrings AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-usbdevicefilterstrings
+	UsbDeviceFilterStrings []string `json:"UsbDeviceFilterStrings,omitempty"`
+
 	// VpcConfig AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-vpcconfig
 	VpcConfig *Fleet_VpcConfig `json:"VpcConfig,omitempty"`
+
+	// AWSCloudFormationUpdatePolicy represents a CloudFormation UpdatePolicy
+	AWSCloudFormationUpdatePolicy *policies.UpdatePolicy `json:"-"`
+
+	// AWSCloudFormationCreationPolicy represents a CloudFormation CreationPolicy
+	AWSCloudFormationCreationPolicy *policies.CreationPolicy `json:"-"`
 
 	// AWSCloudFormationDeletionPolicy represents a CloudFormation DeletionPolicy
 	AWSCloudFormationDeletionPolicy policies.DeletionPolicy `json:"-"`
@@ -131,6 +152,8 @@ func (r Fleet) MarshalJSON() ([]byte, error) {
 		DeletionPolicy      policies.DeletionPolicy      `json:"DeletionPolicy,omitempty"`
 		UpdateReplacePolicy policies.UpdateReplacePolicy `json:"UpdateReplacePolicy,omitempty"`
 		Condition           string                       `json:"Condition,omitempty"`
+		UpdatePolicy        *policies.UpdatePolicy       `json:"UpdatePolicy,omitempty"`
+		CreationPolicy      *policies.CreationPolicy     `json:"CreationPolicy,omitempty"`
 	}{
 		Type:                r.AWSCloudFormationType(),
 		Properties:          (Properties)(r),
@@ -139,6 +162,8 @@ func (r Fleet) MarshalJSON() ([]byte, error) {
 		DeletionPolicy:      r.AWSCloudFormationDeletionPolicy,
 		UpdateReplacePolicy: r.AWSCloudFormationUpdateReplacePolicy,
 		Condition:           r.AWSCloudFormationCondition,
+		UpdatePolicy:        r.AWSCloudFormationUpdatePolicy,
+		CreationPolicy:      r.AWSCloudFormationCreationPolicy,
 	})
 }
 
@@ -154,6 +179,8 @@ func (r *Fleet) UnmarshalJSON(b []byte) error {
 		DeletionPolicy      string
 		UpdateReplacePolicy string
 		Condition           string
+		UpdatePolicy        *policies.UpdatePolicy
+		CreationPolicy      *policies.CreationPolicy
 	}{}
 
 	dec := json.NewDecoder(bytes.NewReader(b))
@@ -183,5 +210,13 @@ func (r *Fleet) UnmarshalJSON(b []byte) error {
 	if res.Condition != "" {
 		r.AWSCloudFormationCondition = res.Condition
 	}
+	if res.UpdatePolicy != nil {
+		r.AWSCloudFormationUpdatePolicy = res.UpdatePolicy
+	}
+
+	if res.CreationPolicy != nil {
+		r.AWSCloudFormationCreationPolicy = res.CreationPolicy
+	}
+
 	return nil
 }

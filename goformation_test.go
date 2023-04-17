@@ -1067,6 +1067,18 @@ var _ = Describe("Goformation", func() {
 				},
 			},
 			{
+				Name:  "Fn::SubVars",
+				Input: cloudformation.SubVars("test-sub", map[string]interface{}{"foo": "bar"}),
+				Expected: map[string]interface{}{
+					"Fn::Sub": []interface{}{
+						"test-sub",
+						map[string]interface{}{
+							"foo": "bar",
+						},
+					},
+				},
+			},
+			{
 				Name:  "Fn::And",
 				Input: cloudformation.And([]string{"test-and-first", "test-and-second", "test-and-third"}),
 				Expected: map[string]interface{}{
@@ -1255,6 +1267,33 @@ var _ = Describe("Goformation", func() {
 
 	})
 
+	Context("with a CDKMetada template", func() {
+
+		template, err := goformation.Open("test/yaml/cdkmetadata.yaml")
+		It("should successfully validate the template", func() {
+			Expect(err).To(BeNil())
+			Expect(template).ShouldNot(BeNil())
+		})
+
+		It("should correctly Marshal the cdkmetadata resource", func() {
+			data, err := template.JSON()
+			Expect(err).To(BeNil())
+
+			var result map[string]interface{}
+			if err := json.Unmarshal(data, &result); err != nil {
+				Fail(err.Error())
+			}
+
+			resources, ok := result["Resources"].(map[string]interface{})
+			Expect(ok).To(BeTrue())
+			Expect(resources).To(HaveLen(1))
+			Expect(resources).To(HaveKey("CDKMetadata"))
+
+			mcr := resources["CDKMetadata"].(map[string]interface{})
+			Expect(mcr["Properties"]).To(HaveKey("Analytics"))
+		})
+	})
+
 	Context("with a template that contains conditional resources", func() {
 
 		template := &cloudformation.Template{
@@ -1394,6 +1433,43 @@ var _ = Describe("Goformation", func() {
         "CodeUri": "hello-world/",
         "Handler": "hello-world",
         "Runtime": "go1.x"
+      },
+      "Type": "AWS::Serverless::Function"
+    }
+  },
+  "Transform": "AWS::Serverless-2016-10-31"
+}`
+
+			got, err := template.JSON()
+			It("should marshal template successfully", func() {
+				Expect(err).To(BeNil())
+			})
+
+			It("should be equal to expected output", func() {
+				Expect(string(got)).To(Equal(expected))
+			})
+		})
+
+		Context("that has an image in arm64 architecture", func() {
+			template := cloudformation.NewTemplate()
+			transform := "AWS::Serverless-2016-10-31"
+			template.Transform = &cloudformation.Transform{
+				String: &transform,
+			}
+			template.Resources["TestFunction"] = &serverless.Function{
+				Architectures: []string{"arm64"},
+				ImageUri:      "image:latest-arm64",
+			}
+
+			expected := `{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "TestFunction": {
+      "Properties": {
+        "Architectures": [
+          "arm64"
+        ],
+        "ImageUri": "image:latest-arm64"
       },
       "Type": "AWS::Serverless::Function"
     }

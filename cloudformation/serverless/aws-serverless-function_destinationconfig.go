@@ -13,11 +13,6 @@ type Function_DestinationConfig struct {
 	// See: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#destination-config-object
 	OnFailure *Function_Destination `json:"OnFailure,omitempty"`
 
-	// OnSuccess AWS CloudFormation Property
-	// Required: true
-	// See: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#destination-config-object
-	OnSuccess *Function_Destination `json:"OnSuccess,omitempty"`
-
 	// AWSCloudFormationDeletionPolicy represents a CloudFormation DeletionPolicy
 	AWSCloudFormationDeletionPolicy policies.DeletionPolicy `json:"-"`
 

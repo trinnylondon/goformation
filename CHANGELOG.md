@@ -1,5 +1,131 @@
 # GoFormation Versioning Changelog
 
+## [5.4.10](https://github.com/awslabs/goformation/compare/v5.4.9...v5.4.10) (2022-02-25)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([c5b4ae3](https://github.com/awslabs/goformation/commit/c5b4ae3f38e61aedf2535a92204c28cac4a048ca))
+
+## [5.4.9](https://github.com/awslabs/goformation/compare/v5.4.8...v5.4.9) (2022-02-21)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([2f3e802](https://github.com/awslabs/goformation/commit/2f3e8023c760b0869ec947a520ffb60a4ed81c1c))
+
+## [5.4.8](https://github.com/awslabs/goformation/compare/v5.4.7...v5.4.8) (2022-02-11)
+
+
+### Bug Fixes
+
+* **generator:** updated resources that support update/creation policy ([18c08b9](https://github.com/awslabs/goformation/commit/18c08b988d0ae39d07bfc3e653bddb2621db8276))
+
+## [5.4.7](https://github.com/awslabs/goformation/compare/v5.4.6...v5.4.7) (2022-02-11)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([bbbbbed](https://github.com/awslabs/goformation/commit/bbbbbeda4560c6d4296324edea11392ed31cc8de))
+
+## [5.4.6](https://github.com/awslabs/goformation/compare/v5.4.5...v5.4.6) (2022-02-08)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#422](https://github.com/awslabs/goformation/issues/422)) ([61378b5](https://github.com/awslabs/goformation/commit/61378b5bad094f764289d53c87b2b2c91f118491))
+
+## [5.4.5](https://github.com/awslabs/goformation/compare/v5.4.4...v5.4.5) (2022-01-18)
+
+
+### Bug Fixes
+
+* **schema:** AWS::CDK::Metadata resource should be automatically generated ([#421](https://github.com/awslabs/goformation/issues/421)) ([65569f7](https://github.com/awslabs/goformation/commit/65569f77c1708e52839ea486d5e10bdabdb24ce0)), closes [#418](https://github.com/awslabs/goformation/issues/418)
+
+## [5.4.4](https://github.com/awslabs/goformation/compare/v5.4.3...v5.4.4) (2022-01-03)
+
+
+### Bug Fixes
+
+* **sam:** AWS::Serverless::Function Properties Architectures property should have a primitive type specified ([#420](https://github.com/awslabs/goformation/issues/420)) ([3aa91ed](https://github.com/awslabs/goformation/commit/3aa91edcb65cc6cfe8d0b2066944bc773acadc9f))
+
+## [5.4.3](https://github.com/awslabs/goformation/compare/v5.4.2...v5.4.3) (2021-12-30)
+
+
+### Bug Fixes
+
+* **schema:** Add architectures support for sam functions ([#419](https://github.com/awslabs/goformation/issues/419)) ([b505b69](https://github.com/awslabs/goformation/commit/b505b694b7fc1d663282b67cdeba71013c4ea5ec))
+
+## [5.4.2](https://github.com/awslabs/goformation/compare/v5.4.1...v5.4.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* **schema:** Add cdkmetada resource ([#418](https://github.com/awslabs/goformation/issues/418)) ([3d1b1f9](https://github.com/awslabs/goformation/commit/3d1b1f91c8e592604becd080a7a61b4064784d03))
+
+## [5.4.1](https://github.com/awslabs/goformation/compare/v5.4.0...v5.4.1) (2021-12-13)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#415](https://github.com/awslabs/goformation/issues/415)) ([e560a0f](https://github.com/awslabs/goformation/commit/e560a0fece3347f1aec326f643400423c2c7bc03))
+
+# [5.4.0](https://github.com/awslabs/goformation/compare/v5.3.0...v5.4.0) (2021-11-22)
+
+
+### Features
+
+* **intrinsics:** Add SubVars to Sub with replacement variables ([#411](https://github.com/awslabs/goformation/issues/411)) ([0940790](https://github.com/awslabs/goformation/commit/094079090ca6b9ec8a98b1eada9fe3ca0e9c163c))
+
+# [5.3.0](https://github.com/awslabs/goformation/compare/v5.2.12...v5.3.0) (2021-11-22)
+
+
+### Features
+
+* **intrinsics:** add support for base64 encoded string in instrinsic if function ([#414](https://github.com/awslabs/goformation/issues/414)) ([652501b](https://github.com/awslabs/goformation/commit/652501b0c05dd136f7faa5ab7b291f56386f0f3f)), closes [#412](https://github.com/awslabs/goformation/issues/412)
+
+## [5.2.12](https://github.com/awslabs/goformation/compare/v5.2.11...v5.2.12) (2021-11-22)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#408](https://github.com/awslabs/goformation/issues/408)) ([2ffeeac](https://github.com/awslabs/goformation/commit/2ffeeac1cd90ec90807af825e49a15b6c8346431))
+
+## [5.2.11](https://github.com/awslabs/goformation/compare/v5.2.10...v5.2.11) (2021-10-06)
+
+
+### Bug Fixes
+
+* **sam:** DestinationConfig shouldn't contain OnSuccess property ([#406](https://github.com/awslabs/goformation/issues/406)) ([6971966](https://github.com/awslabs/goformation/commit/69719668de26c4d9f54b4db25b2ce42313413375)), closes [#404](https://github.com/awslabs/goformation/issues/404)
+
+## [5.2.10](https://github.com/awslabs/goformation/compare/v5.2.9...v5.2.10) (2021-10-05)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#401](https://github.com/awslabs/goformation/issues/401)) ([fa89e23](https://github.com/awslabs/goformation/commit/fa89e2381d69c66fb93496ab35b57a8f52772323))
+
+## [5.2.9](https://github.com/awslabs/goformation/compare/v5.2.8...v5.2.9) (2021-09-03)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#400](https://github.com/awslabs/goformation/issues/400)) ([1606bbe](https://github.com/awslabs/goformation/commit/1606bbe6d8a2b0bd206505ec38542e8d7f6512d6))
+
+## [5.2.8](https://github.com/awslabs/goformation/compare/v5.2.7...v5.2.8) (2021-08-27)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#398](https://github.com/awslabs/goformation/issues/398)) ([c7ebbd3](https://github.com/awslabs/goformation/commit/c7ebbd3328f69e1eaaa4b315f775b1caadcf4191))
+
+## [5.2.7](https://github.com/awslabs/goformation/compare/v5.2.6...v5.2.7) (2021-08-11)
+
+
+### Bug Fixes
+
+* **schema:** CloudFormation Updates ([#393](https://github.com/awslabs/goformation/issues/393)) ([b005b8c](https://github.com/awslabs/goformation/commit/b005b8c6e8df3791af021593423f09cb70c316cf))
+
 ## [5.2.6](https://github.com/awslabs/goformation/compare/v5.2.5...v5.2.6) (2021-07-16)
 
 
