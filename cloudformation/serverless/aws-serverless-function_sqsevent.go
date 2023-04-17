@@ -4,6 +4,13 @@ import (
 	"github.com/awslabs/goformation/v5/cloudformation/policies"
 )
 
+// Scaling_Config, see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-scalingconfig
+// Ryan: created from latest AWS doc
+type Scaling_Config struct {
+	// Min 2, Max 1000 (according to doc)
+	MaximumConcurrency int `json:"MaximumConcurrency"`
+}
+
 // Function_SQSEvent AWS CloudFormation Resource (AWS::Serverless::Function.SQSEvent)
 // See: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#sqs
 type Function_SQSEvent struct {
@@ -22,6 +29,12 @@ type Function_SQSEvent struct {
 	// Required: true
 	// See: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#sqs
 	Queue string `json:"Queue,omitempty"`
+
+	// ScalingConfig AWS CloudFormation Property
+	// Required: false
+	// See: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-scalingconfig
+	// Ryan: created from latest AWS doc
+	ScalingConfig *Scaling_Config `json:"ScalingConfig,omitempty"`
 
 	// AWSCloudFormationDeletionPolicy represents a CloudFormation DeletionPolicy
 	AWSCloudFormationDeletionPolicy policies.DeletionPolicy `json:"-"`
