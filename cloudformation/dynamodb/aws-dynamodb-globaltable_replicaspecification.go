@@ -36,6 +36,11 @@ type GlobalTable_ReplicaSpecification struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-pointintimerecoveryspecification
 	PointInTimeRecoverySpecification *GlobalTable_PointInTimeRecoverySpecification `json:"PointInTimeRecoverySpecification,omitempty"`
 
+	// ReadOnDemandThroughputSettings AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-readondemandthroughputsettings
+	ReadOnDemandThroughputSettings *GlobalTable_ReadOnDemandThroughputSettings `json:"ReadOnDemandThroughputSettings,omitempty"`
+
 	// ReadProvisionedThroughputSettings AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-readprovisionedthroughputsettings
@@ -45,6 +50,16 @@ type GlobalTable_ReplicaSpecification struct {
 	// Required: true
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-region
 	Region string `json:"Region"`
+
+	// ReplicaStreamSpecification AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-replicastreamspecification
+	ReplicaStreamSpecification *GlobalTable_ReplicaStreamSpecification `json:"ReplicaStreamSpecification,omitempty"`
+
+	// ResourcePolicy AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-resourcepolicy
+	ResourcePolicy *GlobalTable_ResourcePolicy `json:"ResourcePolicy,omitempty"`
 
 	// SSESpecification AWS CloudFormation Property
 	// Required: false

@@ -6,36 +6,6 @@ import (
 	"github.com/awslabs/goformation/v7/cloudformation/policies"
 )
 
-// Scaling_Config see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-scalingconfig
-// Ryan: created from latest AWS doc
-type Scaling_Config struct {
-	// Min 2, Max 1000 (according to doc)
-	MaximumConcurrency int `json:"MaximumConcurrency"`
-}
-
-// Filter see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-filter.html
-// Ryan: created from latest AWS doc
-type Filter struct {
-	// Pattern, see https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax
-	Pattern string `json:"Pattern"`
-}
-
-// FilterCriteria see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-filtercriteria.html
-// Ryan: created from latest AWS doc
-type FilterCriteria struct {
-	Filters []Filter `json:"Filters"`
-}
-
-// FunctionResponseType see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html#cfn-lambda-eventsourcemapping-functionresponsetypes
-// Ryan: created from latest AWS doc
-type FunctionResponseType string
-
-const (
-	// FunctionResponseType_ReportBatchItemFailures see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html#cfn-lambda-eventsourcemapping-functionresponsetypes
-	// Ryan: created from latest AWS doc
-	FunctionResponseType_ReportBatchItemFailures FunctionResponseType = "ReportBatchItemFailures"
-)
-
 // Function_SQSEvent AWS CloudFormation Resource (AWS::Serverless::Function.SQSEvent)
 // See: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#sqs
 type Function_SQSEvent struct {
@@ -54,30 +24,6 @@ type Function_SQSEvent struct {
 	// Required: true
 	// See: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#sqs
 	Queue string `json:"Queue"`
-
-	// ScalingConfig AWS CloudFormation Property
-	// Required: false
-	// See: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-scalingconfig
-	// Ryan: created from latest AWS doc
-	ScalingConfig *Scaling_Config `json:"ScalingConfig,omitempty"`
-
-	// FilterCriteria AWS CloudFormation Property
-	// Required: false
-	// See: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-functionresponsetypes
-	// Ryan: created from latest AWS doc
-	FilterCriteria *FilterCriteria `json:"FilterCriteria,omitempty"`
-
-	// FunctionResponseTypes AWS CloudFormation Property
-	// Required: false
-	// See: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-functionresponsetypes
-	// Ryan: created from latest AWS doc
-	FunctionResponseTypes []FunctionResponseType `json:"FunctionResponseTypes,omitempty"`
-
-	// MaximumBatchingWindowInSeconds AWS CloudFormation Property
-	// Require: false
-	// See: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html#sam-function-sqs-functionresponsetypes
-	// Ryan: created from latest AWS doc
-	MaximumBatchingWindowInSeconds *int `json:"MaximumBatchingWindowInSeconds,omitempty"`
 
 	// AWSCloudFormationDeletionPolicy represents a CloudFormation DeletionPolicy
 	AWSCloudFormationDeletionPolicy policies.DeletionPolicy `json:"-"`
