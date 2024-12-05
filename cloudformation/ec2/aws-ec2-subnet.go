@@ -39,6 +39,11 @@ type Subnet struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-enabledns64
 	EnableDns64 *bool `json:"EnableDns64,omitempty"`
 
+	// EnableLniAtDeviceIndex AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-enablelniatdeviceindex
+	EnableLniAtDeviceIndex *int `json:"EnableLniAtDeviceIndex,omitempty"`
+
 	// Ipv4IpamPoolId AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-ipv4ipampoolid
@@ -53,11 +58,6 @@ type Subnet struct {
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-ipv6cidrblock
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty"`
-
-	// Ipv6CidrBlocks AWS CloudFormation Property
-	// Required: false
-	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html#cfn-ec2-subnet-ipv6cidrblocks
-	Ipv6CidrBlocks []string `json:"Ipv6CidrBlocks,omitempty"`
 
 	// Ipv6IpamPoolId AWS CloudFormation Property
 	// Required: false
